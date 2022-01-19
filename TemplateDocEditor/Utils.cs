@@ -1,23 +1,21 @@
 ﻿using System;
+using DepartmentReportGenerator.DocEditor;
 using Word = Microsoft.Office.Interop.Word;
 
 namespace TemplateDocEditor
 {
-    public class DocFileUtils
+    public class Utils
     {
-        public static Word.WdSaveFormat ConvertDocExtensionToWdSaveFormat(DocExtension extension)
+        public static Word.WdSaveFormat ConvertDocExtensionToWdSaveFormat(Extension extension)
         {
             switch (extension)
             {
-                case DocExtension.Default:
+                case Extension.Default:
                     return Word.WdSaveFormat.wdFormatDocumentDefault;
-                    break;
-                case DocExtension.Doc:
+                case Extension.Doc:
                     return Word.WdSaveFormat.wdFormatDocument;
-                    break;
-                case DocExtension.Pdf:
+                case Extension.Pdf:
                     return Word.WdSaveFormat.wdFormatPDF;
-                    break;
                 default:
                     throw new ArgumentException($"Failed to convert '{extension}' extension to WdSaveFormat");
             }

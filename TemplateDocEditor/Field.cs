@@ -1,8 +1,9 @@
-﻿using Word = Microsoft.Office.Interop.Word;
+﻿using DepartmentReportGenerator.DocEditor;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace TemplateDocEditor
 {
-    public class DocFileField
+    public class Field: IField
     {
         public const string FieldExpression = @"\[$?*$\]";
         
@@ -17,7 +18,7 @@ namespace TemplateDocEditor
             set => _range.Text = value;
         }
 
-        public DocFileField(Word.Range range, string field)
+        public Field(Word.Range range, string field)
         {
             _range = range;
             _field = field;

@@ -43,6 +43,10 @@
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
+      <ProjectReference Include="..\DepartmentReportGenerator\DepartmentReportGenerator.csproj">
+        <Project>{066b01ab-77d0-4264-8750-e4c6690a4e87}</Project>
+        <Name>DepartmentReportGenerator</Name>
+      </ProjectReference>
       <ProjectReference Include="..\TemplateDocEditor\TemplateDocEditor.csproj">
         <Project>{88e7e21a-2083-410b-aa22-48400469920a}</Project>
         <Name>TemplateDocEditor</Name>

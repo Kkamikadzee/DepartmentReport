@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Globalization;
 using System.IO;
+using DepartmentReportGenerator.DocEditor;
 using TemplateDocEditor;
+using File = TemplateDocEditor.File;
 
 namespace test
 {
@@ -22,7 +24,7 @@ namespace test
             //     dr?.Dispose();
             // }
 
-            using (var df = new DocFile(Path.Combine(Directory.GetCurrentDirectory(), "data", "template.dotx")))
+            using (var df = new File(Path.Combine(Directory.GetCurrentDirectory(), "data", "template.dotx")))
             {
                 df.Fields["CurrentData"].Text = DateTime.Now.ToString(CultureInfo.InvariantCulture);
                 df.Fields["Department"].Text = "Какой-то не очень длинный текст";
@@ -41,9 +43,9 @@ namespace test
                 df.Tables[0].Cells[0, 0] = "KEK";
                 df.Tables[0].Cells[0, 3] = "123ыыы";
                 
-                df.SaveAs(Path.Combine(Directory.GetCurrentDirectory(), "data", "result"), DocExtension.Doc);
-                df.SaveAs(Path.Combine(Directory.GetCurrentDirectory(), "data", "result"), DocExtension.Default);
-                df.SaveAs(Path.Combine(Directory.GetCurrentDirectory(), "data", "result"), DocExtension.Pdf);
+                df.SaveAs(Path.Combine(Directory.GetCurrentDirectory(), "data", "result"), Extension.Doc);
+                df.SaveAs(Path.Combine(Directory.GetCurrentDirectory(), "data", "result"), Extension.Default);
+                df.SaveAs(Path.Combine(Directory.GetCurrentDirectory(), "data", "result"), Extension.Pdf);
             }
         }
     }

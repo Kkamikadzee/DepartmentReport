@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateDocEditor", "Templa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{D9BB7207-684E-4BEB-A012-F71AA2DD480F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DepartmentReportGenerator", "DepartmentReportGenerator\DepartmentReportGenerator.csproj", "{066B01AB-77D0-4264-8750-E4C6690A4E87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{D9BB7207-684E-4BEB-A012-F71AA2DD480F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9BB7207-684E-4BEB-A012-F71AA2DD480F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9BB7207-684E-4BEB-A012-F71AA2DD480F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{066B01AB-77D0-4264-8750-E4C6690A4E87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{066B01AB-77D0-4264-8750-E4C6690A4E87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{066B01AB-77D0-4264-8750-E4C6690A4E87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{066B01AB-77D0-4264-8750-E4C6690A4E87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
