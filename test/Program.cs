@@ -40,8 +40,12 @@ namespace test
                                                "текст текст текст текст текст текст текст текст текст текст текст текст";
                 
                 df.Tables[0].AddRow();
-                df.Tables[0].Cells[0, 0] = "KEK";
-                df.Tables[0].Cells[0, 3] = "123ыыы";
+                df.Tables[0].Cells[0, 0] = "Ячейка 0 0";
+                df.Tables[0].Cells[0, 3] = "Ячейка 0 3";
+
+                df.Tables[0].AddRow();
+                df.Tables[0].Cells[1, 2] = "Ячейка 1 2";
+                df.Tables[0].Cells[1, 4] = "Ячейка 1 4";
                 
                 df.SaveAs(Path.Combine(Directory.GetCurrentDirectory(), "data", "result"), Extension.Doc);
                 df.SaveAs(Path.Combine(Directory.GetCurrentDirectory(), "data", "result"), Extension.Default);
