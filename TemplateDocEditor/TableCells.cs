@@ -8,7 +8,6 @@ namespace TemplateDocEditor
     {
         private readonly Word.Table _table;
         private readonly Table _docTable;
-        private readonly IReadOnlyList<string> _columnTags;
         
         public string this[int row, int column]
         {
@@ -19,6 +18,7 @@ namespace TemplateDocEditor
         public TableCells(Word.Table table, Table docTable)
         {
             _table = table;
+            _docTable = docTable;
         }
     }
 }
