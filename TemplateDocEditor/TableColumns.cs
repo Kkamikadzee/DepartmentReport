@@ -7,7 +7,9 @@ namespace TemplateDocEditor
 {
     public class TableColumns: ITableColumns
     {
-        public const string ColumnTagExpression = @"\[TableColumn\$.+\$TableColumn\]";
+        public const string ColumnTagExpression = @"\[TabCol\$.+\$TabCol\]";
+        private const int FrontOffsetTag = 8;
+        private const int BackOffsetTag = 16;
         
         private readonly IReadOnlyList<string> _columnTags;
         private readonly IReadOnlyList<string> _columnNames;
@@ -26,7 +28,7 @@ namespace TemplateDocEditor
 
             for(var i = 0; i < tags.Count; i++)
             {
-                names[i] = tags[i].Substring(13, tags[i].Length - 26);
+                names[i] = tags[i].Substring(FrontOffsetTag, tags[i].Length - BackOffsetTag);
             }
 
             return names;
@@ -41,6 +43,7 @@ namespace TemplateDocEditor
             var tags = new string[table.CountColumns];
             for (var i = 0; i < table.CountColumns; i++)
             {
+                var tmp = table.Cells[0, i];
                 var tagMatch = Regex.Match(table.Cells[0, i], ColumnTagExpression);
                 if (!tagMatch.Success)
                 {
