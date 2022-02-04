@@ -38,6 +38,10 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Counter.cs" />
+        <Compile Include="DateFormatter.cs" />
+        <Compile Include="Extensions\IEnumerableExtension.cs" />
+        <Compile Include="Extensions\IReadOnlyListExtension.cs" />
         <Compile Include="TemplateEditor\Extension.cs" />
         <Compile Include="TemplateEditor\IFile.cs" />
         <Compile Include="TemplateEditor\IField.cs" />
@@ -46,10 +50,13 @@
         <Compile Include="TemplateEditor\ITableColumns.cs" />
         <Compile Include="Model\Department.cs" />
         <Compile Include="Model\Group.cs" />
-        <Compile Include="Model\People.cs" />
+        <Compile Include="Model\Person.cs" />
         <Compile Include="Model\Student.cs" />
         <Compile Include="Model\Teacher.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="TemplateEditor\ITemplateFilesStorage.cs" />
+        <Compile Include="TopicsOfFqwReport.cs" />
+        <Compile Include="Utils.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
