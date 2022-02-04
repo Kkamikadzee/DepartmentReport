@@ -2,7 +2,7 @@
 
 namespace DepartmentReportGenerator.Model
 {
-    public partial class People
+    public partial class Person
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

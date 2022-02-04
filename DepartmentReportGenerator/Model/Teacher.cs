@@ -2,7 +2,7 @@
 
 namespace DepartmentReportGenerator.Model
 {
-    public class Teacher : People
+    public class Teacher : Person
     {
         public string ScienceDegree { get; set; }
         public string JobVacancy { get; set; }

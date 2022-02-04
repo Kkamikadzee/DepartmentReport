@@ -5,7 +5,7 @@ namespace DepartmentReportGenerator.Model
     public class Department
     {
         public string Name { get; set; }
-        public People Headmaster { get; set; }
+        public Person Headmaster { get; set; }
         public IReadOnlyList<Group> Groups { get; set; }
     }
 }
