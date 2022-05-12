@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using Cyriller;
 
 namespace DepartmentReportGenerator
 {
@@ -7,7 +8,7 @@ namespace DepartmentReportGenerator
     {
         public static bool FileFieldNameStartsWithTypeName(string fieldName, Type type)
         {
-            return fieldName.StartsWith($"{type.Name}.") || fieldName.Equals(type.Name);
+            return !fieldName.IsNullOrEmpty() && (fieldName.StartsWith($"{type.Name}.") || fieldName.Equals(type.Name));
         }
         
         public static string GetPropertyValueByFormatString(object obj, string format)

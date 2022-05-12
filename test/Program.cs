@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
+using Cyriller;
 using DepartmentReportGenerator;
 using DepartmentReportGenerator.DocEditor;
 using DepartmentReportGenerator.Model;
 using TemplateDocEditor;
+using Cyriller.Model;
 using File = TemplateDocEditor.File;
 
 namespace test
@@ -15,7 +17,7 @@ namespace test
     {
         public class TemplateFileStorage : ITemplateFilesStorage
         {
-            private const string _pathToTemplateFile = @"data/TopicsOfFqwReport.template.dotx";
+            private const string _pathToTemplateFile = @"data/Reviewers.template.dotx";
             
             public IFile TopicsOfFqwReport => new File(Path.Combine(Directory.GetCurrentDirectory(), _pathToTemplateFile));
         }
@@ -35,8 +37,9 @@ namespace test
 
             var group = new Group()
             {
-                EducationType = "магистратуры",
+                EducationType = new DeclinableWord("магистратура"),
                 EducationalProgram = "Информационное обеспечение автоматизированных систем",
+                FormOfEducation = new DeclinableWord("очная"),
                 SpecialityCode = "09.04.03",
                 SpecialityName = "Прикладная информатика",
                 Course = 3,
@@ -95,33 +98,9 @@ namespace test
             
             report.Generate(department, group, DateTime.Now);
 
-            // using (var df = new File(Path.Combine(Directory.GetCurrentDirectory(), "data", "template.dotx")))
-            // {
-            //     df.Fields["CurrentData"].Text = DateTime.Now.ToString(CultureInfo.InvariantCulture);
-            //     df.Fields["Department"].Text = "Какой-то не очень длинный текст";
-            //     df.Fields["TextHeader"].Text = "Какой-то очень длинный текст текст текст текст текст текст текст текст " +
-            //                                    "текст текст текст текст текст текст текст текст текст текст текст текст" +
-            //                                    "текст текст текст текст текст текст текст текст текст текст текст текст" +
-            //                                    "текст текст текст текст текст текст текст текст текст текст текст текст" +
-            //                                    "текст текст текст текст текст текст текст текст текст текст текст текст" +
-            //                                    "текст текст текст текст текст текст текст текст текст текст текст текст" +
-            //                                    "текст текст текст текст текст текст текст текст текст текст текст текст" +
-            //                                    "текст текст текст текст текст текст текст текст текст текст текст текст" +
-            //                                    "текст текст текст текст текст текст текст текст текст текст текст текст" +
-            //                                    "текст текст текст текст текст текст текст текст текст текст текст текст";
-            //     
-            //     df.Tables[0].AddRow();
-            //     df.Tables[0].Cells[0, 0] = "Ячейка 0 0";
-            //     df.Tables[0].Cells[0, 3] = "Ячейка 0 3";
-            //
-            //     df.Tables[0].AddRow();
-            //     df.Tables[0].Cells[1, 2] = "Ячейка 1 2";
-            //     df.Tables[0].Cells[1, 4] = "Ячейка 1 4";
-
-            // df.SaveAs(Path.Combine(Directory.GetCurrentDirectory(), "data", "result"), Extension.Doc);
-            // df.SaveAs(Path.Combine(Directory.GetCurrentDirectory(), "data", "result"), Extension.Default);
-            // df.SaveAs(Path.Combine(Directory.GetCurrentDirectory(), "data", "result"), Extension.Pdf);
-            // }
+            // CyrNounCollection cnc = new CyrNounCollection();
+            // CyrNoun noun = cnc.Get("магистратура", out CasesEnum @cases, out NumbersEnum @number);
+            // Console.WriteLine(noun.Decline().Dative);
         }
     }
 }

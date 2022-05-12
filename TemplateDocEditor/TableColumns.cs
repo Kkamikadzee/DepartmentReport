@@ -28,7 +28,7 @@ namespace TemplateDocEditor
 
             for(var i = 0; i < tags.Count; i++)
             {
-                names[i] = tags[i].Substring(FrontOffsetTag, tags[i].Length - BackOffsetTag);
+                names[i] = tags[i]?.Substring(FrontOffsetTag, tags[i].Length - BackOffsetTag);
             }
 
             return names;
@@ -45,12 +45,13 @@ namespace TemplateDocEditor
             {
                 var tmp = table.Cells[0, i];
                 var tagMatch = Regex.Match(table.Cells[0, i], ColumnTagExpression);
-                if (!tagMatch.Success)
-                {
-                    throw new Exception($"Not found tag in cell [0, {i}].");
-                }
+                // TODO: "Если у ячейки нет тега, вернуть ошибку." УДАЛИТЬ ЭТО.
+                // if (!tagMatch.Success)
+                // {
+                //     throw new Exception($"Not found tag in cell [0, {i}].");
+                // }
 
-                tags[i] = tagMatch.Value;
+                tags[i] = tagMatch.Success ? tagMatch.Value : null;
 
                 table.Cells[0, i] = null;
             }
