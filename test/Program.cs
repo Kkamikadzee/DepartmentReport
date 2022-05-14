@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
-using System.Reflection;
-using Cyriller;
 using DepartmentReportGenerator;
 using DepartmentReportGenerator.DocEditor;
 using DepartmentReportGenerator.Model;
-using TemplateDocEditor;
-using Cyriller.Model;
 using File = TemplateDocEditor.File;
 
 namespace test
@@ -17,7 +12,7 @@ namespace test
     {
         public class TemplateFileStorage : ITemplateFilesStorage
         {
-            private const string _pathToTemplateFile = @"data/Reviewers.template.dotx";
+            private const string _pathToTemplateFile = @"data/Reviewers.template.dotx"; //@"data/TopicsOfFqwReport.template.dotx"; // 
             
             public IFile TopicsOfFqwReport => new File(Path.Combine(Directory.GetCurrentDirectory(), _pathToTemplateFile));
         }
@@ -44,6 +39,7 @@ namespace test
                 SpecialityName = "Прикладная информатика",
                 Course = 3,
                 ShortName =  "ПОМзм-191",
+                AcademicYear = 2021,
                 Students = new List<Student>()
                 {
                     new Student()
@@ -52,6 +48,7 @@ namespace test
                         LastName = "Бекингалиева",
                         Patronymic = "Жолдыхановна",
                         TopicOfFinalQualificationWork = "Разработка элективного курса «Приложения алгебры логики»",
+                        BasisOfEducation = "бюджет",
                         Teacher = new Teacher()
                         {
                             FirstName = "Алексей",
@@ -67,6 +64,7 @@ namespace test
                         LastName = "Кузнецова",
                         Patronymic = "Александровна",
                         TopicOfFinalQualificationWork = "Разработка элективного курса «Основы web-конструирования»",
+                        BasisOfEducation = "бюджет",
                         Teacher = new Teacher()
                         {
                             FirstName = "Алексей",
@@ -82,6 +80,7 @@ namespace test
                         LastName = "Мосина",
                         Patronymic = "Владимировна",
                         TopicOfFinalQualificationWork = "Применение методов машинного обучения в сфере образования",
+                        BasisOfEducation = "бюджет",
                         Teacher = new Teacher()
                         {
                             FirstName = "Гермашев",
@@ -95,12 +94,8 @@ namespace test
             };
 
             var report = new TopicsOfFqwReport(new TemplateFileStorage());
-            
-            report.Generate(department, group, DateTime.Now);
 
-            // CyrNounCollection cnc = new CyrNounCollection();
-            // CyrNoun noun = cnc.Get("магистратура", out CasesEnum @cases, out NumbersEnum @number);
-            // Console.WriteLine(noun.Decline().Dative);
+            report.Generate(department, group, DateTime.Now);
         }
     }
 }
