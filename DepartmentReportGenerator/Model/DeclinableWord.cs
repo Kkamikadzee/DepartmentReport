@@ -7,9 +7,9 @@ namespace DepartmentReportGenerator.Model
     public class DeclinableWord
     {
         // TODO: Убрать эти статические поля отсюда.
-        private static readonly CyrNounCollection CyrNounCollection = new CyrNounCollection();
-        private static readonly CyrAdjectiveCollection CyrAdjectiveCollection = new CyrAdjectiveCollection();
-        private static readonly CyrPhrase CyrPhrase = new CyrPhrase(CyrNounCollection, CyrAdjectiveCollection);
+        // private static readonly CyrNounCollection CyrNounCollection = new CyrNounCollection();
+        // private static readonly CyrAdjectiveCollection CyrAdjectiveCollection = new CyrAdjectiveCollection();
+        // private static readonly CyrPhrase CyrPhrase = new CyrPhrase(CyrNounCollection, CyrAdjectiveCollection);
 
         private readonly string _word;
         private readonly CyrResult _cyrResult;
@@ -24,7 +24,26 @@ namespace DepartmentReportGenerator.Model
         public DeclinableWord(string word)
         {
             _word = word;
-            _cyrResult = CyrPhrase.Decline(word, GetConditionsEnum.Similar);
+            _cyrResult = new CyrNoun(word,
+                GendersEnum.Feminine,
+                AnimatesEnum.Animated,
+                WordTypesEnum.Abbreviation,
+                new CyrRule[]
+                {
+                    new CyrRule("0"),
+                    new CyrRule("1"),
+                    new CyrRule("2"),
+                    new CyrRule("3"),
+                    new CyrRule("4"),
+                    new CyrRule("5"),
+                    new CyrRule("6"),
+                    new CyrRule("7"),
+                    new CyrRule("8"),
+                    new CyrRule("9"),
+                    new CyrRule("10")
+                }).Decline();
+            // TODO: Раскомментировать строку
+            // _cyrResult = CyrPhrase.Decline(word, GetConditionsEnum.Similar);
         }
 
         public override string ToString()

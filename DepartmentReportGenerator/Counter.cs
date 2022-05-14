@@ -13,5 +13,10 @@
         {
             return Value.ToString();
         }
+
+        public void Next()
+        {
+            Value++;
+        }
     }
 }

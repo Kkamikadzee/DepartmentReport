@@ -72,26 +72,6 @@ namespace DepartmentReportGenerator
             FillFileFields(fieldsKey, fieldsValue);
         }
 
-        private IReadOnlyDictionary<string, string> GetRowForTable(ITable table, params object[] objs)
-        {
-            var rowValues = new Dictionary<string, string>(table.CountColumns);
-
-            foreach (object obj in objs)
-            {
-                Type departmentType = obj.GetType();
-                var tmp = table.ColumnNames;
-                IEnumerable<string> fieldsKey = table.ColumnNames.Where(k => Utils.FileFieldNameStartsWithTypeName(k, departmentType));
-                IEnumerable<string> fieldsValue =
-                    fieldsKey.Select(k => Utils.GetPropertyValueByFormatString(obj, k));
-                foreach (var (key, value) in fieldsKey.Zip(fieldsValue))
-                {
-                    rowValues.Add(key, value);
-                }
-            }
-
-            return rowValues;
-        }
-
         private void FillInfoInTable(ITable table, Group group)
         {
             if (table.CountRows < group.Students.Count)
@@ -99,16 +79,14 @@ namespace DepartmentReportGenerator
                 table.AddRow(group.Students.Count - table.CountRows);
             }
 
+            var tableFiller = new TableFiller(table);
+
             var counterForTable = new Counter(0);
             foreach (var (student, index) in group.Students.Select((item, index) => (item, index)))
             {
-                counterForTable.Value++;
+                counterForTable.Next();
                 
-                IReadOnlyDictionary<string, string> row = GetRowForTable(table, counterForTable, group, student);
-                foreach (var cell in row)
-                {
-                    table.Cells[index, cell.Key] = cell.Value;
-                }
+                tableFiller.FillRowByIndex(index, counterForTable, group, student);
             }
         }
     }

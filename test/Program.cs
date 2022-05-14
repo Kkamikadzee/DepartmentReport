@@ -12,7 +12,7 @@ namespace test
     {
         public class TemplateFileStorage : ITemplateFilesStorage
         {
-            private const string _pathToTemplateFile = @"data/Reviewers.template.dotx"; //@"data/TopicsOfFqwReport.template.dotx"; // 
+            private const string _pathToTemplateFile = @"data/TopicsOfFqwReport.template.dotx";
             
             public IFile TopicsOfFqwReport => new File(Path.Combine(Directory.GetCurrentDirectory(), _pathToTemplateFile));
         }
@@ -83,8 +83,8 @@ namespace test
                         BasisOfEducation = "бюджет",
                         Teacher = new Teacher()
                         {
-                            FirstName = "Гермашев",
-                            LastName = "Илья",
+                            FirstName = "Илья",
+                            LastName = "Гермашев",
                             Patronymic = "Васильевич",
                             ScienceDegree = "д.т.н.",
                             JobVacancy = "проф. каф. МАТФ"
