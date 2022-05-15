@@ -1,7 +1,6 @@
 ﻿using System;
-using DepartmentReportGenerator.Model;
 
-namespace DepartmentReportGenerator.DocEditor
+namespace DepartmentReportGenerator.Model
 {
     public class Practice : Document
     {

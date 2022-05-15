@@ -6,9 +6,9 @@ namespace TemplateDocEditor
 {
     public class TableColumns: ITableColumns
     {
-        public const string ColumnTagExpression = @"\[TabCol\$.+\$TabCol\]";
-        private const int FrontOffsetTag = 8;
-        private const int BackOffsetTag = 16;
+        public const string ColumnTagExpression = @"\[=\$.+\$=\]";
+        private const int FrontOffsetTag = 3;
+        private const int BackOffsetTag = 6;
         
         private readonly IReadOnlyList<string> _columnTags;
         private readonly IReadOnlyList<string> _columnNames;

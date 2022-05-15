@@ -56,9 +56,10 @@
     <Compile Include="Extensions\IReadOnlyListExtension.cs" />
     <Compile Include="Model\DeclinableWord.cs" />
     <Compile Include="Model\Document.cs" />
+    <Compile Include="Model\Fqw.cs" />
+    <Compile Include="Model\Practice.cs" />
     <Compile Include="TableFiller.cs" />
     <Compile Include="TemplateEditor\Extension.cs" />
-    <Compile Include="TemplateEditor\Fqw.cs" />
     <Compile Include="TemplateEditor\IFile.cs" />
     <Compile Include="TemplateEditor\IField.cs" />
     <Compile Include="TemplateEditor\ITable.cs" />
@@ -71,7 +72,6 @@
     <Compile Include="Model\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemplateEditor\ITemplateFilesStorage.cs" />
-    <Compile Include="TemplateEditor\Practice.cs" />
     <Compile Include="TopicsOfFqwReport.cs" />
     <Compile Include="FileFieldHelper.cs" />
   </ItemGroup>
