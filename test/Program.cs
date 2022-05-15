@@ -12,14 +12,24 @@ namespace test
     {
         public class TemplateFileStorage : ITemplateFilesStorage
         {
-            private const string _pathToTemplateFile = @"data/TopicsOfFqwReport.template.dotx";
-            
-            public IFile TopicsOfFqwReport => new File(Path.Combine(Directory.GetCurrentDirectory(), _pathToTemplateFile));
+            private const string _pathToTemplateFile = @"data/Reviewers.template.dotx";
+
+            public IFile TopicsOfFqwReport =>
+                new File(Path.Combine(Directory.GetCurrentDirectory(), _pathToTemplateFile));
         }
 
         public static void Main(string[] args)
         {
-            var department = new Department()
+            FinalQualifyingWork fqw = GetTestFqw();
+            
+            var report = new TopicsOfFqwReport(new TemplateFileStorage());
+
+            report.Generate(fqw);
+        }
+
+        public static FinalQualifyingWork GetTestFqw()
+        {
+                        var department = new Department()
             {
                 Name = "Кафедра математического анализа и теории функций",
                 Headmaster = new Person()
@@ -38,8 +48,8 @@ namespace test
                 SpecialityCode = "09.04.03",
                 SpecialityName = "Прикладная информатика",
                 Course = 3,
-                ShortName =  "ПОМзм-191",
-                AcademicYear = 2021,
+                ShortName = "ПОМзм-191",
+                YearOfIssue = 2021,
                 Students = new List<Student>()
                 {
                     new Student()
@@ -93,9 +103,14 @@ namespace test
                 }
             };
 
-            var report = new TopicsOfFqwReport(new TemplateFileStorage());
+            var fqw = new FinalQualifyingWork()
+            {
+                Department = department,
+                DateOfCreation = DateTime.Now,
+                Group = group
+            };
 
-            report.Generate(department, group, DateTime.Now);
+            return fqw;
         }
     }
 }

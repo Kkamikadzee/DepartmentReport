@@ -20,18 +20,18 @@ namespace DepartmentReportGenerator
             _filesStorage = filesStorage;
         }
 
-        public void Generate(Department department, Group group, DateTime date)
+        public void Generate(FinalQualifyingWork finalQualifyingWork)
         {
             using (_file = _filesStorage.TopicsOfFqwReport)
             {
-                FillObjectInfo(department);
-                FillObjectInfo(group);
-                FillDateField(date);
-                FillInfoInTable(_file.Tables[0], group);
+                FillObjectInfo(finalQualifyingWork.Department);
+                FillObjectInfo(finalQualifyingWork.Group);
+                FillDateField(finalQualifyingWork.DateOfCreation);
+                FillInfoInTable(_file.Tables[0], finalQualifyingWork.Group);
             
                 _file.SaveAs(
                     Path.Combine(Directory.GetCurrentDirectory(), "data",
-                        $"TopicOfFqw_{group.ShortName}_{date.ToString(DateFormatter.TopicOfFqw).Replace('.', '_')}"),
+                        $"TopicOfFqw_{finalQualifyingWork.Group.ShortName}_{finalQualifyingWork.DateOfCreation.ToString(DateFormatter.TopicOfFqw).Replace('.', '_')}"),
                     Extension.Default);
                 
             }

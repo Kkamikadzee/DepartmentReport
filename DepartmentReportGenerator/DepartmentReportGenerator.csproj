@@ -56,8 +56,10 @@
     <Compile Include="Extensions\IEnumerableExtension.cs" />
     <Compile Include="Extensions\IReadOnlyListExtension.cs" />
     <Compile Include="Model\DeclinableWord.cs" />
+    <Compile Include="Model\Document.cs" />
     <Compile Include="TableFiller.cs" />
     <Compile Include="TemplateEditor\Extension.cs" />
+    <Compile Include="TemplateEditor\FinalQualifyingWork.cs" />
     <Compile Include="TemplateEditor\IFile.cs" />
     <Compile Include="TemplateEditor\IField.cs" />
     <Compile Include="TemplateEditor\ITable.cs" />

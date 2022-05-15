@@ -13,8 +13,8 @@ namespace DepartmentReportGenerator.Model
         public string SpecialityCode { get; set; }
         public string SpecialityName { get; set; }
         public IReadOnlyList<Student> Students { get; set; }
-        public int AcademicYear { get; set; }
+        public int YearOfIssue { get; set; }
 
-        public string AcademicYearInterval => $"{AcademicYear}/{AcademicYear + 1}";
+        public string YearOfIssueInterval => $"{YearOfIssue}/{YearOfIssue + 1}";
     }
 }
