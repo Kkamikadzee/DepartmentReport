@@ -12,7 +12,7 @@ namespace test
     {
         public class TemplateFileStorage : ITemplateFilesStorage
         {
-            private const string _pathToTemplateFile = @"data/Reviewers.template.dotx";
+            private const string _pathToTemplateFile = @"data/TopicsOfFqwReport.template.dotx";
 
             public IFile TopicsOfFqwReport =>
                 new File(Path.Combine(Directory.GetCurrentDirectory(), _pathToTemplateFile));
@@ -20,14 +20,14 @@ namespace test
 
         public static void Main(string[] args)
         {
-            FinalQualifyingWork fqw = GetTestFqw();
+            Fqw fqw = GetTestFqw();
             
             var report = new TopicsOfFqwReport(new TemplateFileStorage());
 
             report.Generate(fqw);
         }
 
-        public static FinalQualifyingWork GetTestFqw()
+        public static Fqw GetTestFqw()
         {
                         var department = new Department()
             {
@@ -103,7 +103,7 @@ namespace test
                 }
             };
 
-            var fqw = new FinalQualifyingWork()
+            var fqw = new Fqw()
             {
                 Department = department,
                 DateOfCreation = DateTime.Now,

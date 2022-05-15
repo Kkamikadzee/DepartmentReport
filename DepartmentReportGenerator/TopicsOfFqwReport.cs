@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using DepartmentReportGenerator.DocEditor;
 using DepartmentReportGenerator.Extensions;
@@ -20,56 +17,29 @@ namespace DepartmentReportGenerator
             _filesStorage = filesStorage;
         }
 
-        public void Generate(FinalQualifyingWork finalQualifyingWork)
+        public void Generate(Fqw fqw)
         {
             using (_file = _filesStorage.TopicsOfFqwReport)
             {
-                FillObjectInfo(finalQualifyingWork.Department);
-                FillObjectInfo(finalQualifyingWork.Group);
-                FillDateField(finalQualifyingWork.DateOfCreation);
-                FillInfoInTable(_file.Tables[0], finalQualifyingWork.Group);
+                FillObjectInfo(fqw);
+                FillInfoInTable(_file.Tables[0], fqw.Group);
             
                 _file.SaveAs(
                     Path.Combine(Directory.GetCurrentDirectory(), "data",
-                        $"TopicOfFqw_{finalQualifyingWork.Group.ShortName}_{finalQualifyingWork.DateOfCreation.ToString(DateFormatter.TopicOfFqw).Replace('.', '_')}"),
+                        $"TopicOfFqw_{fqw.Group.ShortName}_{fqw.DateOfCreation.ToString("yyyy_MM_dd_hh_mm_ss_FFF").Replace('.', '_')}"),
                     Extension.Default);
                 
             }
 
             _file = null;
         }
-
-        private void FillFileField(string fieldKey, string fieldValue)
-        {
-            if (_file.Fields.ContainsKey(fieldKey))
-            {
-                _file.Fields[fieldKey].Text = fieldValue;
-            }
-        }
-
-        private void FillFileFields(IEnumerable<string> fieldKeys, IEnumerable<string> fieldValues)
-        {
-            foreach (var (key, value) in fieldKeys.Zip(fieldValues))
-            {
-                FillFileField(key, value);
-            }
-        }
         
         private void FillObjectInfo(object obj)
         {
-            Type departmentType = obj.GetType();
-            IEnumerable<string> fieldsKey = _file.Fields.Keys.Where(k => Utils.FileFieldNameStartsWithTypeName(k, departmentType));
-            IEnumerable<string> fieldsValue =
-                fieldsKey.Select(k => Utils.GetPropertyValueByFormatString(obj, k));
-            FillFileFields(fieldsKey, fieldsValue);
-        }
-
-        private void FillDateField(DateTime date)
-        {
-            IEnumerable<string> fieldsKey = _file.Fields.Keys.Where(k => k.Equals("CurrentDate"));
-            IEnumerable<string> fieldsValue =
-                fieldsKey.Select(k => date.ToString(DateFormatter.TopicOfFqw));
-            FillFileFields(fieldsKey, fieldsValue);
+            foreach (string fieldName in _file.Fields.Keys)
+            {
+                _file.Fields[fieldName].Text = FileFieldHelper.GetFieldValue(fieldName, obj);
+            }
         }
 
         private void FillInfoInTable(ITable table, Group group)

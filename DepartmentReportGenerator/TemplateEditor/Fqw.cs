@@ -2,7 +2,7 @@
 
 namespace DepartmentReportGenerator.DocEditor
 {
-    public class FinalQualifyingWork : Document
+    public class Fqw : Document // FQW - FinalQualifyingWork
     {
         public Group Group { get; set; }
     }
