@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DepartmentReportGenerator.DocEditor;
+using DepartmentReportGenerator.TemplateEditor;
 using Word = Microsoft.Office.Interop.Word;
 
 namespace TemplateDocEditor
@@ -16,17 +16,7 @@ namespace TemplateDocEditor
         
         public bool HasHeader => _hasHeader;
         public int CountRows => _hasHeader ? _table.Rows.Count - 1 : _table.Rows.Count;
-        public ITableCells Cells
-        {
-            get
-            {
-                if (_cells is null)
-                {
-                    _cells = new TableCells(_table, this);
-                }
-                return _cells;
-            }
-        }
+        public ITableCells Cells => _cells ??= new TableCells(_table, this);
         public int CountColumns => _table.Columns.Count;
         public IReadOnlyList<string> Header => _header;
 
@@ -34,10 +24,7 @@ namespace TemplateDocEditor
         {
             get
             {
-                if (_columns is null)
-                {
-                    _columns = new TableColumns(this);
-                }
+                _columns ??= new TableColumns(this);
                 return _columns.ColumnNames;
             }
         }

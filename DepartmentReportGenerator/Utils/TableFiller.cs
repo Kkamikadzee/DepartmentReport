@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using DepartmentReportGenerator.DocEditor;
+﻿using System.Linq;
+using DepartmentReportGenerator.TemplateEditor;
 
-namespace DepartmentReportGenerator
+namespace DepartmentReportGenerator.Utils
 {
     public class TableFiller
     {
-        private ITable _table;
+        private readonly ITable _table;
 
         public TableFiller(ITable table)
         {

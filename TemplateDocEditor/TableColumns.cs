@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using DepartmentReportGenerator.DocEditor;
+using DepartmentReportGenerator.TemplateEditor;
 
 namespace TemplateDocEditor
 {
     public class TableColumns: ITableColumns
     {
+        // TODO: Перетащить в конфиг разбив на две части: "открывающаяся скобка (\[=\$)" и "закрывающаяся (\$=\])"
         public const string ColumnTagExpression = @"\[=\$.+\$=\]";
         private const int FrontOffsetTag = 3;
         private const int BackOffsetTag = 6;
@@ -44,11 +45,6 @@ namespace TemplateDocEditor
             {
                 var tmp = table.Cells[0, i];
                 var tagMatch = Regex.Match(table.Cells[0, i], ColumnTagExpression);
-                // TODO: "Если у ячейки нет тега, вернуть ошибку." УДАЛИТЬ ЭТО.
-                // if (!tagMatch.Success)
-                // {
-                //     throw new Exception($"Not found tag in cell [0, {i}].");
-                // }
 
                 tags[i] = tagMatch.Success ? tagMatch.Value : null;
 

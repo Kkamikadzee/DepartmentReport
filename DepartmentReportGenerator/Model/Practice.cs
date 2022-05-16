@@ -16,7 +16,6 @@ namespace DepartmentReportGenerator.Model
         /// </summary>
         public string Type { get; set; }
         public Teacher Headmaster { get; set; }
-        public Teacher ResponsibleOfOrganization { get; set; }
         public string Base { get; set; }
     }
 }

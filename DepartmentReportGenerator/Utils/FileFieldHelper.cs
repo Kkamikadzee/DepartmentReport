@@ -2,8 +2,9 @@
 using System.Linq;
 using System.Reflection;
 using Cyriller;
+using DepartmentReportGenerator.Exception;
 
-namespace DepartmentReportGenerator
+namespace DepartmentReportGenerator.Utils
 {
     public static class FileFieldHelper
     {
@@ -35,7 +36,7 @@ namespace DepartmentReportGenerator
             Type objType = obj.GetType();
             if(!skipClassName && objType.Name != split[0])
             {
-                throw new Exception("Invalid format string");
+                throw new FileFieldError("Invalid format string");
             }
 
             object subObj = obj;
@@ -44,7 +45,7 @@ namespace DepartmentReportGenerator
                 PropertyInfo property = subObj.GetType().GetProperty(split[i]);
                 if (property is null)
                 {
-                    throw new Exception("Invalid format string");
+                    throw new FileFieldError("Invalid format string");
                 }
                 subObj = property.GetValue(subObj);
             }
@@ -57,7 +58,7 @@ namespace DepartmentReportGenerator
             object fieldValueObj =
                 objs.FirstOrDefault(o => FieldNameStartsWithTypeName(fieldName, o.GetType()));
 
-            return GetPropertyValueByFormatString(fieldValueObj, fieldName);
+            return fieldValueObj is null ? null : GetPropertyValueByFormatString(fieldValueObj, fieldName);
         }
         
         private static string GetSimpleFieldValue(string fieldName, object[] objs)
@@ -81,7 +82,7 @@ namespace DepartmentReportGenerator
             {
                 result = string.Format(format, formatValues);
             }
-            catch (Exception e)
+            catch (System.Exception e)
             {
                 Console.WriteLine(e);
             }

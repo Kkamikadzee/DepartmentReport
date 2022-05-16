@@ -1,4 +1,4 @@
-﻿using DepartmentReportGenerator.DocEditor;
+﻿using DepartmentReportGenerator.TemplateEditor;
 using Word = Microsoft.Office.Interop.Word;
 
 namespace TemplateDocEditor

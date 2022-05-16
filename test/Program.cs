@@ -1,35 +1,61 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Configuration;
 using System.IO;
+using System.Linq;
+using System.Security.Policy;
 using DepartmentReportGenerator;
-using DepartmentReportGenerator.DocEditor;
+using DepartmentReportGenerator.Generator;
 using DepartmentReportGenerator.Model;
+using DepartmentReportGenerator.TemplateEditor;
 using File = TemplateDocEditor.File;
 
 namespace test
 {
     internal class Program
     {
-        public class TemplateFileStorage : ITemplateFilesStorage
+        public class WordTemplateFileStorage : TemplateFilesStorage
         {
-            private const string _pathToTemplateFile = @"data/Reviewers.template.dotx";
-
-            public IFile TopicsOfFqwReport =>
-                new File(Path.Combine(Directory.GetCurrentDirectory(), _pathToTemplateFile));
+            protected override IFile GetFileHelper(string relativeFilePath)
+            {
+                return new File(Path.Combine(Directory.GetCurrentDirectory(), relativeFilePath));
+            }
         }
 
         public static void Main(string[] args)
         {
-            Fqw fqw = GetTestFqw();
-            
-            var report = new TopicsOfFqwReport(new TemplateFileStorage());
+            // var cfg = ConfigurationManager.GetSection("ReportGeneratorSettings") as NameValueCollection;
+            // var str = cfg?.Get("Key0");
+            // Console.WriteLine("The value of Key0: " + str);
 
-            report.Generate(fqw);
+
+            Fqw fqw = GetTestFqw();
+
+            var fileStorage = new WordTemplateFileStorage();
+            var reportCreator = new ReportCreator(fileStorage);
+            reportCreator.Create(fqw, reportCreator.TemplateNames.First(),
+                Path.Combine(Directory.GetCurrentDirectory(), "data",
+                    $"{reportCreator.TemplateNames.First()}_{fqw.Group.ShortName}_{fqw.DateOfCreation:yyyy_MM_dd_hh_mm_ss_FFF}"),
+                Extension.Default);
+
+
+            // var report = new SingleTableReportGenerator();
+            //
+            // using (var file = (new TemplateFileStorage()).TopicsOfFqwReport)
+            // {
+            //     report.Generate(file, fqw);
+            //
+            //     file.SaveAs(
+            //         Path.Combine(Directory.GetCurrentDirectory(), "data",
+            //             $"TopicOfFqw_{fqw.Group.ShortName}_{fqw.DateOfCreation:yyyy_MM_dd_hh_mm_ss_FFF}"),
+            //         Extension.Default);
+            // }
         }
 
         public static Fqw GetTestFqw()
         {
-                        var department = new Department()
+            var department = new Department()
             {
                 Name = "Кафедра математического анализа и теории функций",
                 Headmaster = new Person()

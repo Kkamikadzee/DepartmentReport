@@ -11,7 +11,7 @@
     <AssemblyName>DepartmentReportGenerator</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <LangVersion>8</LangVersion>
+    <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,19 +46,24 @@
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Counter.cs" />
-    <Compile Include="Extensions\IEnumerableExtension.cs" />
-    <Compile Include="Extensions\IReadOnlyListExtension.cs" />
+    <Compile Include="Exception\FileFieldException.cs" />
+    <Compile Include="Exception\ReportCreationException.cs" />
+    <Compile Include="Exception\UnknownGeneratorNameException.cs" />
+    <Compile Include="Extension\IEnumerableExtension.cs" />
+    <Compile Include="Extension\IReadOnlyListExtension.cs" />
+    <Compile Include="Generator\ReportGenerator.cs" />
+    <Compile Include="Generator\SingleTableReportGenerator.cs" />
     <Compile Include="Model\DeclinableWord.cs" />
     <Compile Include="Model\Document.cs" />
     <Compile Include="Model\Fqw.cs" />
     <Compile Include="Model\Practice.cs" />
-    <Compile Include="TableFiller.cs" />
+    <Compile Include="ReportCreator.cs" />
     <Compile Include="TemplateEditor\Extension.cs" />
     <Compile Include="TemplateEditor\IFile.cs" />
     <Compile Include="TemplateEditor\IField.cs" />
@@ -71,9 +76,11 @@
     <Compile Include="Model\Student.cs" />
     <Compile Include="Model\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TemplateEditor\ITemplateFilesStorage.cs" />
-    <Compile Include="TopicsOfFqwReport.cs" />
-    <Compile Include="FileFieldHelper.cs" />
+    <Compile Include="TemplateEditor\TemplateFilesStorage.cs" />
+    <Compile Include="Utils\Config.cs" />
+    <Compile Include="Utils\Counter.cs" />
+    <Compile Include="Utils\FileFieldHelper.cs" />
+    <Compile Include="Utils\TableFiller.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

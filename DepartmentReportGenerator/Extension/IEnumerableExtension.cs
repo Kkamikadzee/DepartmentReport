@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace DepartmentReportGenerator.Extensions
+namespace DepartmentReportGenerator.Extension
 {
+    //TODO: Удалить, если по итогу не буду использовать
     public static class IEnumerableExtension
     {
         public static IEnumerable<(TFirst, TSecond)> Zip<TFirst, TSecond>(

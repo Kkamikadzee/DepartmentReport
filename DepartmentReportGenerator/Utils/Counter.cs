@@ -1,4 +1,4 @@
-﻿namespace DepartmentReportGenerator
+﻿namespace DepartmentReportGenerator.Utils
 {
     public class Counter
     {

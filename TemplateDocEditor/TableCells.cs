@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using DepartmentReportGenerator.DocEditor;
-using DepartmentReportGenerator.Extensions;
+using DepartmentReportGenerator.Extension;
+using DepartmentReportGenerator.TemplateEditor;
 using Word = Microsoft.Office.Interop.Word;
 
 namespace TemplateDocEditor

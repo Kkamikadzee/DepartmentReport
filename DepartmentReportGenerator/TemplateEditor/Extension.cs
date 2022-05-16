@@ -1,4 +1,4 @@
-﻿namespace DepartmentReportGenerator.DocEditor
+﻿namespace DepartmentReportGenerator.TemplateEditor
 {
     public enum Extension : byte
     {
