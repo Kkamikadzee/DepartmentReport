@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Policy;
 using DepartmentReportGenerator;
+using DepartmentReportGenerator.Extension;
 using DepartmentReportGenerator.Generator;
 using DepartmentReportGenerator.Model;
 using DepartmentReportGenerator.TemplateEditor;
@@ -25,19 +26,19 @@ namespace test
 
         public static void Main(string[] args)
         {
-            // var cfg = ConfigurationManager.GetSection("ReportGeneratorSettings") as NameValueCollection;
-            // var str = cfg?.Get("Key0");
-            // Console.WriteLine("The value of Key0: " + str);
-
-
             Fqw fqw = GetTestFqw();
+            Practice practice = GetTestPractice();
 
             var fileStorage = new WordTemplateFileStorage();
             var reportCreator = new ReportCreator(fileStorage);
-            reportCreator.Create(fqw, reportCreator.TemplateNames.First(),
-                Path.Combine(Directory.GetCurrentDirectory(), "data",
-                    $"{reportCreator.TemplateNames.First()}_{fqw.Group.ShortName}_{fqw.DateOfCreation:yyyy_MM_dd_hh_mm_ss_FFF}"),
+            foreach (var (templateName, document) in reportCreator.TemplateNames.Zip(new Document[] { fqw, fqw, practice, practice, practice }))
+            {
+                reportCreator.Create(document, templateName,
+                Path.Combine(Directory.GetCurrentDirectory(), "reports",
+                    $"{Path.GetFileNameWithoutExtension(templateName)}_{fqw.Group.ShortName}_{fqw.DateOfCreation:yyyy_MM_dd_hh_mm_ss_FFF}"),
                 Extension.Default);
+            }
+
 
 
             // var report = new SingleTableReportGenerator();
@@ -53,20 +54,25 @@ namespace test
             // }
         }
 
-        public static Fqw GetTestFqw()
+        public static Department GetTestDepartment()
         {
-            var department = new Department()
+            return new Department()
             {
                 Name = "Кафедра математического анализа и теории функций",
-                Headmaster = new Person()
+                Headmaster = new Teacher()
                 {
                     FirstName = "Алексей",
-                    LastName = "Клячин",
-                    Patronymic = "Александрович"
+                    LastName = "Mr.Клячин",
+                    Patronymic = "Александрович",
+                    ScienceDegree = "д.ф.-м. н.",
+                    JobVacancy = "проф. каф. МАТФ"
                 }
             };
+        }
 
-            var group = new Group()
+        public static Group GetTestGroup()
+        {
+            return new Group()
             {
                 EducationType = new DeclinableWord("магистратура"),
                 EducationalProgram = "Информационное обеспечение автоматизированных систем",
@@ -128,15 +134,32 @@ namespace test
                     }
                 }
             };
+        }
 
-            var fqw = new Fqw()
+        public static Fqw GetTestFqw()
+        {
+            return new Fqw()
             {
-                Department = department,
+                Department = GetTestDepartment(),
                 DateOfCreation = DateTime.Now,
-                Group = group
+                Group = GetTestGroup()
             };
+        }
 
-            return fqw;
+        public static Practice GetTestPractice()
+        {
+            return new Practice()
+            {
+                Department = GetTestDepartment(),
+                DateOfCreation = DateTime.Now,
+                Group = GetTestGroup(),
+                Base = "Base практики",
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                Headmaster = GetTestGroup().Students.First().Teacher,
+                Kind = "Kind практики",
+                Type = "Type практики"
+            };
         }
     }
 }

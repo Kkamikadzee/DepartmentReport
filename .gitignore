@@ -15,6 +15,9 @@ bld/
 # Rider cache/options directory
 .idea/
 
+# Visual Studio cache/options directory
+.vs/
+
 # The packages folder can be ignored because of Package Restore
 **/[Pp]ackages/*
 

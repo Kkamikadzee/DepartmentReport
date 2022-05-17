@@ -7,7 +7,8 @@ namespace DepartmentReportGenerator.TemplateEditor
     public abstract class TemplateFilesStorage
     {
         // TODO: Перетащить в конфиг
-        private static readonly ICollection<string> TemplateExtensions = new string[] { "dotx", "dot" };
+        private static readonly ICollection<string> TemplateExtensions = new string[] { ".dotx", ".dot" };
+        private static readonly string DirectoryWithTemplates = @"data";
 
         private IDictionary<string, string> _fileNamePathPairs;
 
@@ -29,11 +30,10 @@ namespace DepartmentReportGenerator.TemplateEditor
 
         private IDictionary<string, string> GetFileNamePathPairs()
         {
-            // TODO: Почему-то список пустой на этапе Where
-            return Directory.GetFiles(@"data")
+            return Directory.GetFiles(DirectoryWithTemplates)
                 .Where(n => TemplateExtensions.Contains(Path.GetExtension(n)))
-                .Select(n => (n, $@"data/{n}"))
-                .ToDictionary(k => k.n, i => i.Item2);
+                .Select(n => (Path.GetFileName(n), n))
+                .ToDictionary(k => k.Item1, i => i.Item2);
         }
     }
 }

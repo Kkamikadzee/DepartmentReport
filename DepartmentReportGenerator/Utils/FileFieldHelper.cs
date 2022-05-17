@@ -24,19 +24,21 @@ namespace DepartmentReportGenerator.Utils
         {
             return FieldNameStartsWithMemberName(fieldName, type);
         }
-        
+
         private static bool FieldNameStartsWithMemberName(string fieldName, MemberInfo memberInfo)
         {
             return !fieldName.IsNullOrEmpty() && (fieldName.StartsWith($"{memberInfo.Name}.") || fieldName.Equals(memberInfo.Name));
         }
-        
+
         private static object GetPropertyValueByFormatString(object obj, string format, bool skipClassName = false)
         {
             string[] split = format.Split('.');
             Type objType = obj.GetType();
-            if(!skipClassName && objType.Name != split[0])
+            if (!skipClassName && objType.Name != split[0])
             {
-                throw new FileFieldError("Invalid format string");
+                throw new FileFieldError($"Invalid format string.\n" +
+                    $"Type.Name: '{objType.Name}'.\n" +
+                    $"Format: '{format}'.");
             }
 
             object subObj = obj;
@@ -45,12 +47,16 @@ namespace DepartmentReportGenerator.Utils
                 PropertyInfo property = subObj.GetType().GetProperty(split[i]);
                 if (property is null)
                 {
-                    throw new FileFieldError("Invalid format string");
+                    throw new FileFieldError($"Invalid format string.\n" +
+                        $"Object type name: '{objType.Name}'.\n" +
+                        $"Subobject type name: '{subObj.GetType().Name}'.\n" +
+                        $"Expected propert name: '{split[i]}'.\n" +
+                        $"Format: '{format}'.");
                 }
                 subObj = property.GetValue(subObj);
             }
 
-            return subObj;        
+            return subObj;
         }
 
         private static object GetSimpleFieldValueAsObject(string fieldName, object[] objs)
@@ -60,7 +66,7 @@ namespace DepartmentReportGenerator.Utils
 
             return fieldValueObj is null ? null : GetPropertyValueByFormatString(fieldValueObj, fieldName);
         }
-        
+
         private static string GetSimpleFieldValue(string fieldName, object[] objs)
         {
             object fieldValueObj = GetSimpleFieldValueAsObject(fieldName, objs);
