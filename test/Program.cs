@@ -11,6 +11,7 @@ using DepartmentReportGenerator.Generator;
 using DepartmentReportGenerator.Model;
 using DepartmentReportGenerator.TemplateEditor;
 using File = TemplateDocEditor.File;
+using DepartmentDatabase;
 
 namespace test
 {
@@ -26,6 +27,8 @@ namespace test
 
         public static void Main(string[] args)
         {
+            //Class1.Test();
+
             Fqw fqw = GetTestFqw();
             Practice practice = GetTestPractice();
 

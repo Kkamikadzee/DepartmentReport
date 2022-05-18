@@ -18,7 +18,7 @@ namespace DepartmentReportGenerator.Utils
 
         private Config()
         {
-            _config = ConfigurationManager.GetSection("ReportGeneratorSettings") as NameValueCollection;
+            _config = ConfigurationManager.GetSection("reportGeneratorSettings") as NameValueCollection;
         }
     }
 }
