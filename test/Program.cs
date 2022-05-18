@@ -27,20 +27,20 @@ namespace test
 
         public static void Main(string[] args)
         {
-            //Class1.Test();
+            Class1.Test();
 
-            Fqw fqw = GetTestFqw();
-            Practice practice = GetTestPractice();
+            //Fqw fqw = GetTestFqw();
+            //Practice practice = GetTestPractice();
 
-            var fileStorage = new WordTemplateFileStorage();
-            var reportCreator = new ReportCreator(fileStorage);
-            foreach (var (templateName, document) in reportCreator.TemplateNames.Zip(new Document[] { fqw, fqw, practice, practice, practice }))
-            {
-                reportCreator.Create(document, templateName,
-                Path.Combine(Directory.GetCurrentDirectory(), "reports",
-                    $"{Path.GetFileNameWithoutExtension(templateName)}_{fqw.Group.ShortName}_{fqw.DateOfCreation:yyyy_MM_dd_hh_mm_ss_FFF}"),
-                Extension.Default);
-            }
+            //var fileStorage = new WordTemplateFileStorage();
+            //var reportCreator = new ReportCreator(fileStorage);
+            //foreach (var (templateName, document) in reportCreator.TemplateNames.Zip(new Document[] { fqw, fqw, practice, practice, practice }))
+            //{
+            //    reportCreator.Create(document, templateName,
+            //    Path.Combine(Directory.GetCurrentDirectory(), "reports",
+            //        $"{Path.GetFileNameWithoutExtension(templateName)}_{fqw.Group.ShortName}_{fqw.DateOfCreation:yyyy_MM_dd_hh_mm_ss_FFF}"),
+            //    Extension.Default);
+            //}
 
 
 
