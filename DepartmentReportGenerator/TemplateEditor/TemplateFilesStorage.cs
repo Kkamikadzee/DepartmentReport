@@ -16,7 +16,10 @@ namespace DepartmentReportGenerator.TemplateEditor
         {
             get
             {
-                _fileNamePathPairs ??= GetFileNamePathPairs();
+                if (_fileNamePathPairs is null)
+                {
+                    _fileNamePathPairs = GetFileNamePathPairs();
+                }
                 return _fileNamePathPairs.Keys;
             }
         }

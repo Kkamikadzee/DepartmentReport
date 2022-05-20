@@ -17,7 +17,5 @@ namespace DepartmentDatabase.Model
         public int YearOfIssue { get; set; }
 
         public virtual Department Department { get; set; }
-
-        //public virtual ICollection<Student> Student { get; set; }
     }
 }

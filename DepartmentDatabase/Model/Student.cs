@@ -13,7 +13,5 @@ namespace DepartmentDatabase.Model
 
         public virtual Person Person { get; set; }
         public virtual Teacher Teacher { get; set; }
-
-        //public virtual ICollection<Group> Group { get; set; }
     }
 }

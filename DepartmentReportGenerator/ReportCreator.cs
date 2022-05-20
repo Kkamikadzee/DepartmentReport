@@ -14,7 +14,7 @@ namespace DepartmentReportGenerator
         private readonly TemplateFilesStorage _templateFiles;
         private ICollection<string> _templateNames;
 
-        public ICollection<string> TemplateNames => _templateNames ??= GetTemplateNames();
+        public ICollection<string> TemplateNames => _templateNames is null ? _templateNames = GetTemplateNames() : _templateNames;
 
         public ReportCreator(TemplateFilesStorage templateFiles)
         {

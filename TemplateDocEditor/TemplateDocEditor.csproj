@@ -74,7 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DepartmentReportGenerator\DepartmentReportGenerator.csproj">
-      <Project>{066b01ab-77d0-4264-8750-e4c6690a4e87}</Project>
+      <Project>{c616347b-e1b3-4a39-9690-6fda4aea42f5}</Project>
       <Name>DepartmentReportGenerator</Name>
     </ProjectReference>
   </ItemGroup>

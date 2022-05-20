@@ -11,7 +11,7 @@ namespace DepartmentDatabase
     {
         public static void Test()
         {
-            using(var db = new DepartmentDBContext())
+            using(var db = new DepartmentDbContext())
             {
                 var tmp1 = db.Student.Where(s => s.Person.FirstName == "Петр").ToArray();
                 Console.WriteLine(tmp1.FirstOrDefault()?.TopicOfFinalQualificationWork);
@@ -21,10 +21,10 @@ namespace DepartmentDatabase
             ////switch (Path.GetExtension(path))
             ////{
             ////    case ".xls": //Excel 97-03.
-            ////        conString = ConfigurationManager.ConnectionStrings["Excel03ConString"].ConnectionString;
+            ////        conString = ConfigurationManager.ConnectionStrings["Excel03"].ConnectionString;
             ////        break;
             ////    case ".xlsx": //Excel 07 and above.
-            ////        conString = ConfigurationManager.ConnectionStrings["Excel07ConString"].ConnectionString;
+            ////        conString = ConfigurationManager.ConnectionStrings["Excel07"].ConnectionString;
             ////        break;
             ////}
 

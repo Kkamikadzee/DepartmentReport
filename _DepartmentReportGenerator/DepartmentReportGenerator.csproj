@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{066B01AB-77D0-4264-8750-E4C6690A4E87}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DepartmentReportGenerator</RootNamespace>
+    <AssemblyName>DepartmentReportGenerator</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>default</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>default</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Cyriller, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Miyconst.Cyriller.0.1.1\lib\net45\Cyriller.dll</HintPath>
+    </Reference>
+    <Reference Include="Cyriller.Model, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Miyconst.Cyriller.0.1.1\lib\net45\Cyriller.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Cyriller.Rule, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Miyconst.Cyriller.0.1.1\lib\net45\Cyriller.Rule.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Exception\FileFieldException.cs" />
+    <Compile Include="Exception\ReportCreationException.cs" />
+    <Compile Include="Exception\UnknownGeneratorNameException.cs" />
+    <Compile Include="Extension\IEnumerableExtension.cs" />
+    <Compile Include="Extension\IReadOnlyListExtension.cs" />
+    <Compile Include="Generator\ReportGenerator.cs" />
+    <Compile Include="Generator\SingleTableReportGenerator.cs" />
+    <Compile Include="Model\DeclinableWord.cs" />
+    <Compile Include="Model\Document.cs" />
+    <Compile Include="Model\Fqw.cs" />
+    <Compile Include="Model\Practice.cs" />
+    <Compile Include="ReportCreator.cs" />
+    <Compile Include="TemplateEditor\Extension.cs" />
+    <Compile Include="TemplateEditor\IFile.cs" />
+    <Compile Include="TemplateEditor\IField.cs" />
+    <Compile Include="TemplateEditor\ITable.cs" />
+    <Compile Include="TemplateEditor\ITableCells.cs" />
+    <Compile Include="TemplateEditor\ITableColumns.cs" />
+    <Compile Include="Model\Department.cs" />
+    <Compile Include="Model\Group.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\Student.cs" />
+    <Compile Include="Model\Teacher.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemplateEditor\TemplateFilesStorage.cs" />
+    <Compile Include="Utils\Config.cs" />
+    <Compile Include="Utils\Counter.cs" />
+    <Compile Include="Utils\FileFieldHelper.cs" />
+    <Compile Include="Utils\TableFiller.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+</Project>
