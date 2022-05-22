@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DepartmentReportGenerator.Model
+namespace ReportGenerator.Model
 {
     public class Document
     {

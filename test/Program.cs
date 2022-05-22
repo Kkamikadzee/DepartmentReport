@@ -1,46 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Configuration;
-using System.IO;
 using System.Linq;
-using System.Security.Policy;
-using DepartmentReportGenerator;
-using DepartmentReportGenerator.Extension;
-using DepartmentReportGenerator.Generator;
-using DepartmentReportGenerator.Model;
-using DepartmentReportGenerator.TemplateEditor;
-using File = TemplateDocEditor.File;
-using DepartmentDatabase;
+using System.IO;
+using ReportGenerator;
+using ReportGenerator.Extension;
+using ReportGenerator.Model;
+using ReportGenerator.TemplateEditor;
+using TemplateDocEditor;
+using Database;
+using RepostWinForms;
 
-namespace test
+namespace ReportController
 {
     internal class Program
     {
-        public class WordTemplateFileStorage : TemplateFilesStorage
-        {
-            protected override IFile GetFileHelper(string relativeFilePath)
-            {
-                return new File(Path.Combine(Directory.GetCurrentDirectory(), relativeFilePath));
-            }
-        }
-
         public static void Main(string[] args)
         {
+            // var app = new WindowApplication();
+            //
+            // var form = app.Form;
+            //
+            // app.Start();
+
             Class1.Test();
 
-            Fqw fqw = GetTestFqw();
-            Practice practice = GetTestPractice();
+            //Fqw fqw = GetTestFqw();
+            //Practice practice = GetTestPractice();
 
-            var fileStorage = new WordTemplateFileStorage();
-            var reportCreator = new ReportCreator(fileStorage);
-            foreach (var (templateName, document) in reportCreator.TemplateNames.Zip(new Document[] { fqw, fqw, practice, practice, practice }))
-            {
-                reportCreator.Create(document, templateName,
-                Path.Combine(Directory.GetCurrentDirectory(), "reports",
-                    $"{Path.GetFileNameWithoutExtension(templateName)}_{fqw.Group.ShortName}_{fqw.DateOfCreation:yyyy_MM_dd_hh_mm_ss_FFF}"),
-                Extension.Default);
-            }
+            //var fileStorage = new WordTemplateFileStorage();
+            //var reportCreator = new ReportCreator(fileStorage);
+            //foreach (var (templateName, document) in reportCreator.TemplateNames.Zip(new Document[] { fqw, fqw, practice, practice, practice }))
+            //{
+            //    reportCreator.Create(document, templateName,
+            //    Path.Combine(Directory.GetCurrentDirectory(), "reports",
+            //        $"{Path.GetFileNameWithoutExtension(templateName)}_{fqw.Group.ShortName}_{fqw.DateOfCreation:yyyy_MM_dd_hh_mm_ss_FFF}"),
+            //    Extension.Default);
+            //}
         }
 
         public static Department GetTestDepartment()

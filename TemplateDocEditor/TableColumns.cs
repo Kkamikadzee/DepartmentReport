@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using DepartmentReportGenerator.TemplateEditor;
+using ReportGenerator.TemplateEditor;
 
 namespace TemplateDocEditor
 {

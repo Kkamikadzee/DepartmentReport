@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace DepartmentReportGenerator.Model
+namespace ReportGenerator.Model
 {
     public class Teacher : Person
     {
-        public string ScienceDegree { get; set; }
-        public string JobVacancy { get; set; }
+        public virtual string ScienceDegree { get; set; }
+        public virtual string JobVacancy { get; set; }
     }
 }

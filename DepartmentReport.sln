@@ -5,11 +5,15 @@ VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemplateDocEditor", "TemplateDocEditor\TemplateDocEditor.csproj", "{88E7E21A-2083-410B-AA22-48400469920A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DepartmentReportGenerator", "DepartmentReportGenerator\DepartmentReportGenerator.csproj", "{C616347B-E1B3-4A39-9690-6FDA4AEA42F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportGenerator", "DepartmentReportGenerator\ReportGenerator.csproj", "{C616347B-E1B3-4A39-9690-6FDA4AEA42F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DepartmentDatabase", "DepartmentDatabase\DepartmentDatabase.csproj", "{D0AA4B05-3ECD-4FAC-9858-34216AEFDB61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "DepartmentDatabase\Database.csproj", "{D0AA4B05-3ECD-4FAC-9858-34216AEFDB61}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{47943649-E2CA-4C83-B5AD-38A35A2DFB53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepostWinForms", "DepartmentRepostWinForms\RepostWinForms.csproj", "{B1A71C3C-5F3F-4C6C-B8D8-B881AF4D3363}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportController", "DepartmentReportController\ReportController.csproj", "{3FA4954A-0786-4A90-B3F5-CBB2C7F2967B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{47943649-E2CA-4C83-B5AD-38A35A2DFB53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47943649-E2CA-4C83-B5AD-38A35A2DFB53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47943649-E2CA-4C83-B5AD-38A35A2DFB53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1A71C3C-5F3F-4C6C-B8D8-B881AF4D3363}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1A71C3C-5F3F-4C6C-B8D8-B881AF4D3363}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1A71C3C-5F3F-4C6C-B8D8-B881AF4D3363}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1A71C3C-5F3F-4C6C-B8D8-B881AF4D3363}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FA4954A-0786-4A90-B3F5-CBB2C7F2967B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FA4954A-0786-4A90-B3F5-CBB2C7F2967B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FA4954A-0786-4A90-B3F5-CBB2C7F2967B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FA4954A-0786-4A90-B3F5-CBB2C7F2967B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

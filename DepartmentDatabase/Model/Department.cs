@@ -1,9 +1,13 @@
 ﻿using System;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using Database.Utils;
 
-namespace DepartmentDatabase.Model
+
+namespace Database.Model
 {
-    public partial class Department
+    public partial class Department : ReportGenerator.Model.Department
     {
         public Department()
         {
@@ -12,9 +16,23 @@ namespace DepartmentDatabase.Model
 
         public Guid Id { get; set; }
         public Guid HeadmasterId { get; set; }
-        public string Name { get; set; }
-
-        public virtual Teacher Headmaster { get; set; }
+        
+        public Teacher HeadmasterRelation { get; set; }
+        
         public virtual ICollection<Group> Group { get; set; }
+
+        [NotMapped]
+        public override IReadOnlyCollection<ReportGenerator.Model.Group> Groups
+        {
+            get => Group.ToArray();
+            set => throw new NotImplementedException();
+        }
+
+        [NotMapped]
+        public override ReportGenerator.Model.Teacher Headmaster
+        {
+            get => HeadmasterRelation;
+            set => CopyModelToEntity.Copy(value, HeadmasterRelation);
+        }
     }
 }

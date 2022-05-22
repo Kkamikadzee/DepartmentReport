@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DepartmentReportGenerator.Extension
+namespace ReportGenerator.Extension
 {
     public static class IReadOnlyListExtension
     {

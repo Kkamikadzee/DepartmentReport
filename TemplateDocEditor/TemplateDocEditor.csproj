@@ -68,14 +68,15 @@
     <Compile Include="TableColumns.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WordTemplateFileStorage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DepartmentReportGenerator\DepartmentReportGenerator.csproj">
+    <ProjectReference Include="..\DepartmentReportGenerator\ReportGenerator.csproj">
       <Project>{c616347b-e1b3-4a39-9690-6fda4aea42f5}</Project>
-      <Name>DepartmentReportGenerator</Name>
+      <Name>ReportGenerator</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

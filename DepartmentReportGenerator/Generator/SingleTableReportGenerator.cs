@@ -1,7 +1,7 @@
-﻿using DepartmentReportGenerator.Model;
-using DepartmentReportGenerator.TemplateEditor;
+﻿using ReportGenerator.Model;
+using ReportGenerator.TemplateEditor;
 
-namespace DepartmentReportGenerator.Generator
+namespace ReportGenerator.Generator
 {
     public class SingleTableReportGenerator : ReportGenerator
     {

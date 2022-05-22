@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
-namespace DepartmentReportGenerator.Model
+namespace ReportGenerator.Model
 {
     public partial class Person
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Patronymic { get; set; }
+        public virtual string FirstName { get; set; }
+        public virtual string LastName { get; set; }
+        public virtual string Patronymic { get; set; }
 
+        [IgnoreDataMember]
         public string FullName
         {
             get
@@ -27,6 +29,7 @@ namespace DepartmentReportGenerator.Model
             }
         }
 
+        [IgnoreDataMember]
         public string ShortNameWithFirstInitials
         {
             get
@@ -46,6 +49,7 @@ namespace DepartmentReportGenerator.Model
             }        
         }
 
+        [IgnoreDataMember]
         public string ShortNameWithFirstLastName
         {
             get

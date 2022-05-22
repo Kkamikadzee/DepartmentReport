@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DepartmentReportGenerator.Extension
+namespace ReportGenerator.Extension
 {
     //TODO: Удалить, если по итогу не буду использовать
     public static class IEnumerableExtension

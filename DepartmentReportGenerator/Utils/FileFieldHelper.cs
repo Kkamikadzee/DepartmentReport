@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Reflection;
 using Cyriller;
-using DepartmentReportGenerator.Exception;
+using ReportGenerator.Exception;
 
-namespace DepartmentReportGenerator.Utils
+namespace ReportGenerator.Utils
 {
     public static class FileFieldHelper
     {

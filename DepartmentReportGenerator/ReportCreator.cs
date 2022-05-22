@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DepartmentReportGenerator.Exception;
-using DepartmentReportGenerator.Generator;
-using DepartmentReportGenerator.Model;
-using DepartmentReportGenerator.TemplateEditor;
-using DepartmentReportGenerator.Utils;
+using ReportGenerator.Exception;
+using ReportGenerator.Generator;
+using ReportGenerator.Model;
+using ReportGenerator.TemplateEditor;
+using ReportGenerator.Utils;
 
-namespace DepartmentReportGenerator
+namespace ReportGenerator
 {
     public class ReportCreator
     {
@@ -24,7 +24,7 @@ namespace DepartmentReportGenerator
         public void Create(Document documentData, string templateName, string resultFilePath,
             TemplateEditor.Extension extension)
         {
-            ReportGenerator reportGenerator = GetGeneratorByConfigName(templateName);
+            Generator.ReportGenerator reportGenerator = GetGeneratorByConfigName(templateName);
             using (IFile file = _templateFiles.GetFile(templateName))
             {
                 try
@@ -56,7 +56,7 @@ namespace DepartmentReportGenerator
             return Config.Instance.KnownFiles.Intersect(_templateFiles.FileNames).ToArray();
         }
 
-        private ReportGenerator GetGeneratorByConfigName(string templateName)
+        private Generator.ReportGenerator GetGeneratorByConfigName(string templateName)
         {
             switch (Config.Instance[templateName])
             {

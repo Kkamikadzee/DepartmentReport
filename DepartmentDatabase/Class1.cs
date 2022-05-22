@@ -5,17 +5,25 @@ using System.Data.OleDb;
 using System.Configuration;
 using System.Linq;
 
-namespace DepartmentDatabase
+namespace Database
 {
     public static class Class1
     {
         public static void Test()
         {
-            using(var db = new DepartmentDbContext())
+            var models = new DatabaseReportModel();
+            var students = models.Students;
+            if (students.Count != 0)
             {
-                var tmp1 = db.Student.Where(s => s.Person.FirstName == "Петр").ToArray();
+                var tmp1 = students.Where(s => s?.FirstName == "Петр").ToArray();
                 Console.WriteLine(tmp1.FirstOrDefault()?.TopicOfFinalQualificationWork);
             }
+            else
+            {
+                Console.WriteLine("Студентов нет");
+            }
+            
+
 
             ////string conString = String.Empty;
             ////switch (Path.GetExtension(path))
@@ -61,7 +69,6 @@ namespace DepartmentDatabase
             //        }
             //    }
             //}
-
         }
     }
 }

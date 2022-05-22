@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
 
-namespace DepartmentReportGenerator.Utils
+namespace ReportGenerator.Utils
 {
     public sealed class Config
     {

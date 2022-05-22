@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DepartmentDatabase.Model
+namespace Database.Model
 {
     public partial class GroupStudent
     {

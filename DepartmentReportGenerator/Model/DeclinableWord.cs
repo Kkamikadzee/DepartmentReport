@@ -2,7 +2,7 @@
 using System;
 using Cyriller.Model;
 
-namespace DepartmentReportGenerator.Model
+namespace ReportGenerator.Model
 {
     public class DeclinableWord
     {

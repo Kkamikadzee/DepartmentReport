@@ -303,13 +303,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DepartmentDatabase\DepartmentDatabase.csproj">
+    <ProjectReference Include="..\DepartmentDatabase\Database.csproj">
       <Project>{d0aa4b05-3ecd-4fac-9858-34216aefdb61}</Project>
-      <Name>DepartmentDatabase</Name>
+      <Name>Database</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DepartmentReportGenerator\DepartmentReportGenerator.csproj">
+    <ProjectReference Include="..\DepartmentReportController\ReportController.csproj">
+      <Project>{3fa4954a-0786-4a90-b3f5-cbb2c7f2967b}</Project>
+      <Name>ReportController</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DepartmentReportGenerator\ReportGenerator.csproj">
       <Project>{c616347b-e1b3-4a39-9690-6fda4aea42f5}</Project>
-      <Name>DepartmentReportGenerator</Name>
+      <Name>ReportGenerator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DepartmentRepostWinForms\RepostWinForms.csproj">
+      <Project>{b1a71c3c-5f3f-4c6c-b8d8-b881af4d3363}</Project>
+      <Name>RepostWinForms</Name>
     </ProjectReference>
     <ProjectReference Include="..\TemplateDocEditor\TemplateDocEditor.csproj">
       <Project>{88e7e21a-2083-410b-aa22-48400469920a}</Project>

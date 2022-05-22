@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DepartmentReportGenerator.TemplateEditor
+namespace ReportGenerator.TemplateEditor
 {
     public interface IFile: IDisposable
     {

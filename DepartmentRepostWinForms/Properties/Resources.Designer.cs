@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DepartmentRepostWinForms.Properties
+namespace RepostWinForms.Properties
 {
 
 

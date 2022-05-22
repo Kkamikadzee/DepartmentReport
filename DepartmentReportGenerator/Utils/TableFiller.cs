@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using DepartmentReportGenerator.TemplateEditor;
+using ReportGenerator.TemplateEditor;
 
-namespace DepartmentReportGenerator.Utils
+namespace ReportGenerator.Utils
 {
     public class TableFiller
     {

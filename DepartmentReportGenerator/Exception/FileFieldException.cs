@@ -1,4 +1,4 @@
-﻿namespace DepartmentReportGenerator.Exception
+﻿namespace ReportGenerator.Exception
 {
     public class FileFieldError : System.Exception
     {

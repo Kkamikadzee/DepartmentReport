@@ -1,9 +1,9 @@
-﻿namespace DepartmentReportGenerator.Model
+﻿namespace ReportGenerator.Model
 {
     public class Student : Person
     {
-        public string TopicOfFinalQualificationWork { get; set; }
-        public Teacher Teacher { get; set; }
-        public string BasisOfEducation { get; set; }
+        public virtual string TopicOfFinalQualificationWork { get; set; }
+        public virtual Teacher Teacher { get; set; }
+        public virtual string BasisOfEducation { get; set; }
     }
 }

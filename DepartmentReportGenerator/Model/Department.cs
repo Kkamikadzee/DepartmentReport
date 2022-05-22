@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace DepartmentReportGenerator.Model
+namespace ReportGenerator.Model
 {
     public class Department
     {
-        public string Name { get; set; }
-        public Teacher Headmaster { get; set; }
-        public IReadOnlyList<Group> Groups { get; set; }
+        public virtual string Name { get; set; }
+        public virtual Teacher Headmaster { get; set; }
+        public virtual IReadOnlyCollection<Group> Groups { get; set; }
     }
 }

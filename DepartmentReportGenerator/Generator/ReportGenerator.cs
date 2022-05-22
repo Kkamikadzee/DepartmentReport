@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DepartmentReportGenerator.Model;
-using DepartmentReportGenerator.TemplateEditor;
-using DepartmentReportGenerator.Utils;
+using ReportGenerator.Model;
+using ReportGenerator.TemplateEditor;
+using ReportGenerator.Utils;
 
-namespace DepartmentReportGenerator.Generator
+namespace ReportGenerator.Generator
 {
     public abstract class ReportGenerator
     {

@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Configuration;
-using DepartmentDatabase.Model;
+using Database.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using ReportGenerator.Model;
+using Department = Database.Model.Department;
+using Group = Database.Model.Group;
+using Person = Database.Model.Person;
+using Student = Database.Model.Student;
+using Teacher = Database.Model.Teacher;
 
-namespace DepartmentDatabase
+namespace Database
 {
     public partial class DepartmentDbContext : DbContext
     {
@@ -48,7 +54,7 @@ namespace DepartmentDatabase
                     .IsRequired()
                     .HasColumnName("name");
 
-                entity.HasOne(d => d.Headmaster)
+                entity.HasOne(d => d.HeadmasterRelation)
                     .WithMany(p => p.Department)
                     .HasForeignKey(d => d.HeadmasterId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
@@ -66,18 +72,38 @@ namespace DepartmentDatabase
                 entity.Property(e => e.Course).HasColumnName("course");
 
                 entity.Property(e => e.DepartmentId).HasColumnName("department_id");
-
-                entity.Property(e => e.EducationType)
+                
+                entity.Property(e => e.EducationTypeString)
                     .IsRequired()
                     .HasColumnName("education_type");
+
+                entity
+                    .Ignore(t => t.EducationType)
+                    .Ignore(t => t.FormOfEducation);
+
+                // TODO: Я хз почему не работает конвертация
+                // entity.Property(e => e.EducationType)
+                //     .IsRequired()
+                //     .HasConversion(
+                //         v => v.ToString(),
+                //         v => new DeclinableWord(v))
+                //     .HasColumnName("education_type");
 
                 entity.Property(e => e.EducationalProgram)
                     .IsRequired()
                     .HasColumnName("educational_program");
 
-                entity.Property(e => e.FormOfEducation)
+                entity.Property(e => e.FormOfEducationString)
                     .IsRequired()
                     .HasColumnName("form_of_education");
+                
+                // TODO: Я хз почему не работает конвертация
+                // entity.Property(e => e.FormOfEducation)
+                //     .IsRequired()
+                //     .HasConversion(
+                //         v => v.ToString(), 
+                //         v => new DeclinableWord(v))
+                //     .HasColumnName("form_of_education");
 
                 entity.Property(e => e.ShortName)
                     .IsRequired()
@@ -139,7 +165,7 @@ namespace DepartmentDatabase
                     .IsRequired()
                     .HasColumnName("last_name");
 
-                entity.Property(e => e.Partonymic).HasColumnName("partonymic");
+                entity.Property(e => e.Patronymic).HasColumnName("patronymic");
             });
 
             modelBuilder.Entity<Student>(entity =>
@@ -150,7 +176,7 @@ namespace DepartmentDatabase
                     .HasColumnName("id")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.BasicOfEducation).HasColumnName("basic_of_education");
+                entity.Property(e => e.BasisOfEducation).HasColumnName("basis_of_education");
 
                 entity.Property(e => e.PersonId).HasColumnName("person_id");
 
@@ -164,7 +190,7 @@ namespace DepartmentDatabase
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("student_person_id_fkey");
 
-                entity.HasOne(d => d.Teacher)
+                entity.HasOne(d => d.TeacherRelation)
                     .WithMany(p => p.Student)
                     .HasForeignKey(d => d.TeacherId)
                     .OnDelete(DeleteBehavior.ClientSetNull)

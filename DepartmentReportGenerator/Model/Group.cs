@@ -1,20 +1,22 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
-namespace DepartmentReportGenerator.Model
+namespace ReportGenerator.Model
 {
     public class Group
     {
-        public string Name { get; set; }
-        public string ShortName { get; set; }
-        public int Course { get; set; }
-        public DeclinableWord EducationType { get; set; }
-        public string EducationalProgram { get; set; }
-        public DeclinableWord FormOfEducation { get; set; }
-        public string SpecialityCode { get; set; }
-        public string SpecialityName { get; set; }
-        public IReadOnlyList<Student> Students { get; set; }
-        public int YearOfIssue { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string ShortName { get; set; }
+        public virtual int Course { get; set; }
+        public virtual DeclinableWord EducationType { get; set; }
+        public virtual string EducationalProgram { get; set; }
+        public virtual DeclinableWord FormOfEducation { get; set; }
+        public virtual string SpecialityCode { get; set; }
+        public virtual string SpecialityName { get; set; }
+        public virtual int YearOfIssue { get; set; }
+        public virtual IReadOnlyCollection<Student> Students { get; set; }
 
+        [IgnoreDataMember]
         public string YearOfIssueInterval => $"{YearOfIssue}/{YearOfIssue + 1}";
     }
 }

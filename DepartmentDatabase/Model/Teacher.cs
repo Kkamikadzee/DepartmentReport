@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DepartmentDatabase.Model
+namespace Database.Model
 {
-    public partial class Teacher
+    public partial class Teacher : ReportGenerator.Model.Teacher
     {
         public Teacher()
         {
@@ -13,11 +14,30 @@ namespace DepartmentDatabase.Model
 
         public Guid Id { get; set; }
         public Guid PersonId { get; set; }
-        public string ScienceDegree { get; set; }
-        public string JobVacancy { get; set; }
 
         public virtual Person Person { get; set; }
         public virtual ICollection<Department> Department { get; set; }
         public virtual ICollection<Student> Student { get; set; }
+        
+        [NotMapped]
+        public override string FirstName
+        {
+            get => Person.FirstName;
+            set => Person.FirstName = value;
+        }
+
+        [NotMapped]
+        public override string LastName
+        {
+            get => Person.LastName;
+            set => Person.LastName = value;
+        }
+
+        [NotMapped]
+        public override string Patronymic
+        {
+            get => Person.Patronymic;
+            set => Person.Patronymic = value;
+        }
     }
 }

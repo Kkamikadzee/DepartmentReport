@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 
-namespace DepartmentReportGenerator.TemplateEditor
+namespace ReportGenerator.TemplateEditor
 {
     public abstract class TemplateFilesStorage
     {
