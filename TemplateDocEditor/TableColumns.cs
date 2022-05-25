@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using ReportGenerator.TemplateEditor;
+using Config = TemplateDocEditor.Utils.Config;
 
 namespace TemplateDocEditor
 {
     public class TableColumns: ITableColumns
     {
-        // TODO: Перетащить в конфиг разбив на две части: "открывающаяся скобка (\[=\$)" и "закрывающаяся (\$=\])"
-        public const string ColumnTagExpression = @"\[=\$.+\$=\]";
-        private const int FrontOffsetTag = 3;
-        private const int BackOffsetTag = 6;
+        public static readonly string ColumnTagExpression = Config.Instance.ColumnTagExpression;
+        private static readonly int FrontOffsetTag = Config.Instance.FrontOffsetTag;
+        private static readonly int BackOffsetTag = Config.Instance.BackOffsetTag;
         
         private readonly IReadOnlyList<string> _columnTags;
         private readonly IReadOnlyList<string> _columnNames;

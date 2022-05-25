@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using ReportGenerator.TemplateEditor;
+using TemplateDocEditor.Utils;
+using Convert = TemplateDocEditor.Utils.Convert;
 using Word = Microsoft.Office.Interop.Word;
 
 namespace TemplateDocEditor
@@ -34,10 +36,10 @@ namespace TemplateDocEditor
         {
             // File.Delete(absolutePathFile);
             _document.SaveAs(FileName: absolutePathFile,
-                FileFormat: Utils.ConvertDocExtensionToWdSaveFormat(extension), 
+                FileFormat: Convert.ConvertDocExtensionToWdSaveFormat(extension),
                 ReadOnlyRecommended: true);
         }
-        
+
         private Word.Document ReadDocument(string absolutePathFile)
         {
             return _application.Documents.Open(absolutePathFile, ReadOnly: true);
@@ -47,7 +49,7 @@ namespace TemplateDocEditor
         {
             Word.Range range = _application.Selection.Range;
             Word.Find find = range.Find;
-            
+
             find.ClearFormatting();
             find.MatchWildcards = true;
             find.Text = Field.FieldExpression;
@@ -61,7 +63,7 @@ namespace TemplateDocEditor
                 string field = fieldRange.Text;
                 var docFileField = new Field(fieldRange, field);
                 fields.Add(docFileField.FieldName, docFileField);
-                
+
                 find.Execute2007();
             }
 
@@ -71,7 +73,7 @@ namespace TemplateDocEditor
         private IReadOnlyList<ITable> FindAllTables()
         {
             var tables = new Table[_document.Tables.Count];
-            
+
             var i = 0;
             IEnumerator tableEnumerator = _document.Tables.GetEnumerator();
             while (tableEnumerator.MoveNext())
