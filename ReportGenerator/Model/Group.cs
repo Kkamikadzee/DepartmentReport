@@ -16,6 +16,6 @@ namespace ReportGenerator.Model
         public virtual IReadOnlyCollection<Student> Students { get; set; }
 
         [IgnoreDataMember]
-        public string YearOfIssueInterval => $"{YearOfIssue}/{YearOfIssue + 1}";
+        public string YearOfIssueInterval => $"{YearOfIssue - 1}/{YearOfIssue}";
     }
 }
