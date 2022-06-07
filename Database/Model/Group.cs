@@ -20,7 +20,7 @@ namespace Database.Model
         [NotMapped]
         public override DeclinableWord EducationType
         {
-            get => DeclinableWordCreator.Instance.Create(FormOfEducationString);
+            get => DeclinableWordCreator.Instance.Create(EducationTypeString);
             set => value.ToString();
         }
 
