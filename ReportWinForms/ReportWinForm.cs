@@ -114,6 +114,7 @@ namespace RepostWinForms
             if (string.IsNullOrEmpty(resultFilePath))
             {
                 SetStatus($"Генерация {templateFile} отчёта отменена");
+                return;
             }
 
             GenerateDocument.Invoke(document, templateFile, resultFilePath);
