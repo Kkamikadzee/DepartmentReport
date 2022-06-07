@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReportWinForm));
             this.department = new System.Windows.Forms.ComboBox();
             this.practicePage = new System.Windows.Forms.TabPage();
             this.practiceGenerateButton = new System.Windows.Forms.Button();
@@ -361,6 +362,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.department);
             this.Controls.Add(this.tabControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ReportWinForm";
             this.Text = "Генератор отчётов кафедры";
             this.practicePage.ResumeLayout(false);
