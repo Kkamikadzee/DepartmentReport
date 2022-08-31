@@ -113,12 +113,13 @@ namespace RepostWinForms
             var resultFilePath = ShowSaveFileDialog(document, templateFile);
             if (string.IsNullOrEmpty(resultFilePath))
             {
-                SetStatus("Генерация templateFile отчёта отменена");
+                SetStatus($"Генерация {templateFile} отчёта отменена");
+                return;
             }
 
             GenerateDocument.Invoke(document, templateFile, resultFilePath);
 
-            SetStatus("Генерация templateFile отчёта...");
+            SetStatus($"Генерация {templateFile} отчёта...");
         }
 
         private string ShowSaveFileDialog(Document document, string templateName)

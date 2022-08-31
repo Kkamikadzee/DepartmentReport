@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "Database\Databa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DepartmentReportGenerator", "DepartmentReportGenerator\DepartmentReportGenerator.csproj", "{47943649-E2CA-4C83-B5AD-38A35A2DFB53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepostWinForms", "RepostWinForms\RepostWinForms.csproj", "{B1A71C3C-5F3F-4C6C-B8D8-B881AF4D3363}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportWinForms", "ReportWinForms\ReportWinForms.csproj", "{B1A71C3C-5F3F-4C6C-B8D8-B881AF4D3363}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportController", "ReportController\ReportController.csproj", "{3FA4954A-0786-4A90-B3F5-CBB2C7F2967B}"
 EndProject

@@ -38,6 +38,10 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>mkdir data
+copy "$(SolutionDir)AppData\data" "$(TargetDir)data"</PreBuildEvent>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cyriller, Version=0.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Miyconst.Cyriller.0.1.1\lib\net45\Cyriller.dll</HintPath>
@@ -331,9 +335,9 @@
       <Project>{c616347b-e1b3-4a39-9690-6fda4aea42f5}</Project>
       <Name>ReportGenerator</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RepostWinForms\RepostWinForms.csproj">
+    <ProjectReference Include="..\ReportWinForms\ReportWinForms.csproj">
       <Project>{b1a71c3c-5f3f-4c6c-b8d8-b881af4d3363}</Project>
-      <Name>RepostWinForms</Name>
+      <Name>ReportWinForms</Name>
     </ProjectReference>
     <ProjectReference Include="..\TemplateDocEditor\TemplateDocEditor.csproj">
       <Project>{88e7e21a-2083-410b-aa22-48400469920a}</Project>

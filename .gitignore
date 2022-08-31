@@ -20,14 +20,3 @@ bld/
 
 # The packages folder can be ignored because of Package Restore
 **/[Pp]ackages/*
-
-# Data folder in test
-!**/test
-!**/test/bin
-!**/test/bin/[Dd]ebug
-!**/test/bin/[Dd]ebug/data
-!**/test/bin/[Dd]ebug/data/Examples
-
-**/test/obj
-**test/bin/[Dd]ebug/*.*
-

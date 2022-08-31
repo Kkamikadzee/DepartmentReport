@@ -20,7 +20,7 @@ namespace TemplateDocEditor
 
         public File(string absolutePathFile)
         {
-            _application = new Word.ApplicationClass();
+            _application = new Word.Application();
             _document = ReadDocument(absolutePathFile);
             _fields = FindAllFields();
             _tables = FindAllTables();
